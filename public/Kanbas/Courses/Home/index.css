@@ -1,0 +1,65 @@
+.wd-course-status {
+  margin-left: 30px;
+  margin-top: 10px;
+}
+
+.breadcrumb li:first-child {
+  color: red;
+}
+
+.home-modules-hidden {
+  color: white;
+  background-color: black;
+  width: 100%;
+  height: 80px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.wd-course-home-modules .offcanvas-fullscreen {
+  width: 100vw;
+  max-width: none;
+}
+
+.wd-course-home-modules .offcanvas-fullscreen .offcanvas-body-row a {
+  color: red;
+  text-decoration: none;
+  font-size: 20px;
+  margin: 20px;
+}
+
+.wd-course-home-modules .offcanvas-fullscreen .offcanvas-body-row a i {
+  margin-right: 15px;
+}
+
+.wd-course-status-calendar {
+  margin-top: 20px;
+}
+
+.wd-course-status .wd-course-status-calendar .wd-course-status-calendar-right {
+  text-decoration: none;
+  color: red;
+}
+
+.wd-course-status hr {
+  margin-top: 0;
+}
+
+.wd-course-status-calendar-below {
+  padding: 0;
+  color: gray;
+}
+
+.wd-course-status-calendar-below .detail-calendar-time {
+  margin-bottom: 30px;
+}
+
+.wd-course-status-calendar-below-detail {
+  margin-left: 0;
+}
+
+.wd-course-status-calendar-below a {
+  text-decoration: none;
+  color: red;
+}
