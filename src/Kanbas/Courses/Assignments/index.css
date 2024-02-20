@@ -1,0 +1,53 @@
+.kanbas-courses-assignments .assignments-breadcrumb {
+  margin: 25px;
+}
+.kanbas-courses-assignments .assignments-breadcrumb li:nth-child(2) {
+  margin-left: 20px;
+  color: red;
+}
+
+.kanbas-courses-assignments .assignments-breadcrumb i {
+  margin-top: 2px;
+  color: red;
+}
+
+.assignment-list-group-item-icons {
+  width: 5%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.assignment-list-group-item-desc {
+  color: gray;
+  font-size: 14px;
+}
+
+.assignments-name {
+  text-decoration: none;
+  color: black;
+}
+
+.offcanvas-full-screen {
+  position: fixed;
+  z-index: 1;
+  transition: -webkit-transform 0.3s ease-in-out;
+  transition: transform 0.3s ease-in-out;
+  transition: transform 0.3s ease-in-out, -webkit-transform 0.3s ease-in-out;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  background: #0a0a0a;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  -webkit-transform: translateY(-100%);
+  -ms-transform: translateY(-100%);
+  transform: translateY(-100%);
+  overflow-y: auto;
+}
+
+.offcanvas-full-screen .offcanvas-top-row {
+  color: red;
+  text-decoration: none;
+}
