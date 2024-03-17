@@ -1,0 +1,22 @@
+.assign-box {
+  padding: 0px;
+  border-style: solid;
+  border-color: lightgray;
+  border-radius: 5px;
+}
+
+.assign-button {
+  height: 50px;
+  align-items: center;
+  justify-content: center;
+  border-top: solid;
+  border-radius: 0%;
+  border-color: lightgray;
+  background-color: LightGray;
+  margin: 0;
+  width: 100%;
+}
+
+.point-input {
+  padding: 0;
+}

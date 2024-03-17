@@ -6,15 +6,38 @@ import {
   FaPlus,
   FaBook,
 } from 'react-icons/fa';
-import { Link, useParams } from 'react-router-dom';
-import { assignments } from '../../Database';
+import { useNavigate, Link, useParams } from 'react-router-dom';
+import db from '../../Database';
+import {
+  addAssignment,
+  deleteAssignment,
+  selectAssignment,
+} from './assignmentsReducer';
+
+import { useSelector, useDispatch } from 'react-redux';
 import './index.css';
 
 function Assignments() {
   const { courseId } = useParams();
-  const assignmentList = assignments.filter(
-    (assignment) => assignment.course === courseId
+  const assignment = useSelector(
+    (state: any) => state.assignmentsReducer.assignment
   );
+  const assignments = useSelector(
+    (state: any) => state.assignmentsReducer.assignments
+  );
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+  const courseAssignments = assignments.filter(
+    (assignment: any) => assignment.course === courseId
+  );
+
+  const confirmAndDelete = (assignmentId: any) => {
+    const tobeDelete = window.confirm('Do you want to delete this assignment?');
+    if (tobeDelete) {
+      dispatch(deleteAssignment(assignmentId));
+    }
+  };
   return (
     <>
       <br />
@@ -33,6 +56,14 @@ function Assignments() {
             <FaPlus /> Group
           </button>
           <button
+            onClick={() => {
+              dispatch(
+                addAssignment({ title: 'New Assignment', courseId: courseId })
+              );
+              navigate(
+                `/Kanbas/Courses/${courseId}/Assignments/${assignment._id}`
+              );
+            }}
             style={{ marginRight: '5px' }}
             type="button"
             className="btn btn-danger"
@@ -66,7 +97,7 @@ function Assignments() {
               </span>
             </div>
             <ul className="list-group">
-              {assignmentList.map((assignment) => (
+              {courseAssignments.map((assignment: any) => (
                 <li className="list-group-item">
                   <div className="row">
                     <div className="col-1 p-2 assignment-list-group-item-icons">
@@ -78,20 +109,22 @@ function Assignments() {
                         to={`/Kanbas/Courses/${courseId}/Assignments/${assignment._id}`}
                       >
                         {assignment.title}
+                        <button
+                          className="btn btn-sm btn-secondary"
+                          onClick={() => dispatch(selectAssignment(assignment))}
+                        >
+                          Edit
+                        </button>
+                        <button
+                          className="btn btn-sm btn-danger"
+                          onClick={(e) => {
+                            e.preventDefault();
+                            confirmAndDelete(assignment._id);
+                          }}
+                        >
+                          Delete
+                        </button>
                       </Link>
-                      <br />
-                      <span className="assignment-list-group-item-desc">
-                        <span style={{ color: 'red' }}>Multiple Modules</span> |{' '}
-                        <strong>Not available until</strong> Oct 15 at 12:00am |
-                      </span>
-                      <span className="float-end">
-                        <FaCheckCircle className="text-success" />
-                        <FaEllipsisV className="ms-2" />
-                      </span>
-                      <br />
-                      <span className="assignment-list-group-item-desc">
-                        <strong>Due</strong> Oct 13 at 11:59pm | 100pts
-                      </span>
                     </div>
                   </div>
                 </li>
